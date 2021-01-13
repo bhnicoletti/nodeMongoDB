@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= data.titulo %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/materialize.css" />
+  <link rel="stylesheet" href="/stylesheets/introjs.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="/produtos">Produtos</a></li>
+      <li class="divider"></li>
+      <li><a href="/clientes">Clientes</a></li>
+    </ul>
+
+    <ul class="sidenav" id="mobile-demo">
+       <li><a href="/">Loja Virtual</a></li>
+       <li><a href="/produtos">Lista de Produtos</a></li>
+       <li><a href="/produto">Novo Cadastro de Produto</a></li>
+       <li><a href="/clientes">Lista de Clientes</a></li>
+       <li><a href="/cliente">Novo Cadastro de Cliente</a></li>
+     </ul>
+  <div class="blue">
+    <div class="bg">
+      <div class="container">
+          <a href="/" class="brand-logo">
+          <img class="logo" src="../images/logo.png"></a>
+
+          <nav class="blue darken-3">
+
+              <div class="right" data-intro='Aqui está o menu de navegação'>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                  <li><a href="/loja">Loja Virtual</a></li>
+                  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Cadastros<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+              </div>
+
+              <div class="col s12" data-intro='Aqui estão os Breadcrumbs'>
+                <a href="#" class="breadcrumb"></a>
+                <a href="/" class="breadcrumb">Início</a>
+                <% if(data.rota != "") { %>
+                <a href="<%= data.rotaUrl %>" class="breadcrumb"><%= data.rota %></a>
+                <% } %>
+              </div>
+
+          </nav>
+      </div>
+    </div>
+  </div>
+
+  </header>
+
+   <main>
+     <div class="container" data-intro='Aqui estão os textos, imagens e forms'>
+       <% if(msg == 1) { %>
+       <div id="sucesso" class="materialert success">
+           <div class="material-icons">check</div>
+            Salvo com sucesso!
+       </div>
+       <% } else if(msg == 2) {%>
+       <div id="erro" class="materialert error">
+           <div class="material-icons">error_outline</div>
+            Ops. Ouve um erro
+       </div>
+       <% }  %>
+
+      <%- body %>
+
+
+     </div>
+
+   </main>
+
+
+
+        <footer class="page-footer blue" data-intro='Este é o FatFooter'>
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Informações Adicionais</h5>
+                <p class="grey-text text-lighten-4">Prototipo de aplicativo web desenvolvido como trabalho de pós graduação.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links Rápidos</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="/produtos">Lista de Produtos</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/produto">Adicionar novo Produto</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/clientes">Lista de Clientes</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/cliente">Adicionar novo Cliente</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/">Loja Virtual</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright blue darken-3">
+            <div class="container">
+              Dev by b.h.nicoletti
+            </div>
+          </div>
+        </footer>
+  <script src="../javascripts/jquery.js"></script>
+  <script src="../javascripts/jquery.mask.js"></script>
+  <script src="../javascripts/materialize.js"></script>
+  <script src="../javascripts/intro.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+    $(".dropdown-trigger").dropdown();
+    $('select').formSelect();
+    $('.modal').modal();
+  //  introJs().start();
+  });
+
+  function fechar (){
+    $('.fixed-action-btn').toggle();
+  }
+  function abrirModal(desc, id){
+    $('#pok').text('Deseja deletar o '+desc+' ?' );
+    $('#linkok').attr("href", "/delete/"+id);
+  }
+  function abrirModalProd(desc, id){
+    $('#pok').text('Deseja deletar o '+desc+' ?' );
+    $('#linkok').attr("href", "/deleteProd/"+id);
+  }
+
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<%- contentFor('body') %>
+
+    <div class="row">
+      <div class="col s12">
+        <h1><%= data.titulo %></h1>
+        <p>Preencha os dados abaixo para salvar o produto.</p>
+      </div>
+      <form action="<%= action %>" method="POST">
+        <div class="row">
+          <div class="input-field col s12">
+             <i class="material-icons prefix">account_circle</i>
+             <input id="icon_prefix" type="text" name="descProduto" class="validate" value="<%= doc.descProduto %>" required />
+             <label for="icon_prefix">Descrição Produto</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+             <i class="material-icons prefix">attach_money</i>
+             <input id="icon_prefix2" type="text" data-mask="#.##0,00" data-mask-reverse="true" name="vlrCompra" class="validate" value="<%= doc.vlrCompra %>" required />
+             <label for="icon_prefix2">Valor Compra:</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+             <i class="material-icons prefix">attach_money</i>
+             <input id="icon_prefix3" type="text" data-mask="#.##0,00" data-mask-reverse="true" name="vlrVenda" class="validate" value="<%= doc.vlrVenda %>" required />
+             <label for="icon_prefix3">Valor Venda:</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12 center">
+               <a class="waves-effect waves-light btn red" href="/produtos">Cancelar</a> | <button class="waves-effect waves-light btn" type="submit">Salvar</button>
+          </div>
+        </div>
+
+
+
+        </form>
+    </div>

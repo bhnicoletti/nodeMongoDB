@@ -1,0 +1,56 @@
+<%- contentFor('body') %>
+
+
+  <!-- produto -->
+  <h1>Listagem de Produtos</h1>
+  <p>Produtos já cadastrados no sistema.</p>
+  <table>
+    <thead>
+      <tr style="background-color: #CCC">
+        <td style="width:50%">Descrição Produto</td>
+        <td style="width:15%">Valor Compra</td>
+        <td style="width:15%">Valor Venda</td>
+        <td colspan="2" style="width:20%">Ações</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% if(!docs || docs.length == 0) { %>
+        <tr>
+          <td colspan='4'>Nenhum produto cadastrado.</td>
+        </tr>
+      <% } else {
+          docs.forEach(function(customer){ %>
+          <tr>
+            <td style='width:50%'><%= customer.descProduto %></td>
+            <td style='width:15%'>R$ <%= customer.vlrCompra %></td>
+            <td style='width:15%'>R$ <%= customer.vlrVenda %></td>
+            <td style='width:20%'>
+              <a class="waves-effect waves-light btn red modal-trigger" href="#modalConfirm" onclick="abrirModalProd('<%= customer.descProduto %>', '<%= customer._id %>')" >Excluir</a>
+
+            </td>
+            <td style='width:20%'>
+              <a class="waves-effect waves-light btn" href="/editProd/<%= customer._id %>" title="Alterar Produto" >Alterar</a>
+            </td>
+          </tr>
+          <% })
+          }%>
+    </tbody>
+    <tfoot>
+
+      <tr>
+        <td colspan="4">
+          <a class="waves-effect waves-light btn" href="/produto"><i class="material-icons left">add</i>Cadastrar Novo Produto</a>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <div id="modalConfirm" class="modal">
+    <div class="modal-content">
+      <h4>Modal de Confirmação</h4>
+      <p id="pok">Deseja deletar o ?</p>
+    </div>
+    <div class="modal-footer">
+      <a id="linkok" class="waves-effect waves-light btn "><i class="material-icons right">check_circle</i>Sim</a>
+      <a href="#!" class="modal-close waves-effect waves-light btn red"> Não<i class="material-icons right">cancel</i></a>
+    </div>
+  </div>

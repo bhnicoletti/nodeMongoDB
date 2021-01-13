@@ -1,0 +1,39 @@
+<%- contentFor('body') %>
+    <h1><%= data.titulo %></h1>
+    <p>Preencha os dados abaixo para salvar o cliente.</p>
+    <form action="<%= action %>" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+           <i class="material-icons prefix">account_circle</i>
+           <input id="icon_prefix" type="text" name="nome" value="<%= doc.nome %>" class="validate" required />
+           <label for="icon_prefix">Nome:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+           <i class="material-icons prefix">accessibility</i>
+           <input id="icon_prefix2" class="validate" required type="text" maxlength="2" data-mask="#0" data-mask-reverse="true" name="idade" value="<%= doc.idade %>" />
+           <label for="icon_prefix2">Idade:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+           <i class="material-icons prefix">location_on</i>
+           <select id="icon_prefix3" name="uf" class="validate" required>
+               <option <% if (doc.uf == 'PR') { %> selected <% } %> >PR</option>
+               <option <% if (doc.uf == 'RS') { %> selected <% } %> >RS</option>
+               <option <% if (doc.uf == 'SC') { %> selected <% } %> >SC</option>
+               <option <% if (doc.uf == 'SP') { %> selected <% } %> >SP</option>
+               <!-- coloque os estados que quiser -->
+           </select>
+           <label for="icon_prefix3">UF:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+           <a class="waves-effect waves-light btn red" href="/clientes">Cancelar</a> | <button class="waves-effect waves-light btn" type="submit">Salvar</button>
+        </div>
+      </div>
+
+
+    </form>

@@ -1,0 +1,57 @@
+<%- contentFor('body') %>
+
+
+  <!-- produto -->
+  <h1>Listagem de Produtos</h1>
+  <p>Produtos já cadastrados no sistema.</p>
+
+  <div class="row">
+    <div class="col s12 m12">
+      <% if(!docs || docs.length == 0) { %>
+        <p>Nenhum produto cadastrado.</p>
+      <% } else {
+          docs.forEach(function(customer){ %>
+
+
+              <div class="col s12 m6 l4 ">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="images/caiaque.jpg">
+
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title"><%= customer.descProduto %></span>
+                    <p>Valor: <%= customer.vlrVenda %></p>
+                  </div>
+                  <div class="card-action">
+                    <a  href="/lojaProd/<%= customer._id %>"  title="Ver Mais">Ver Mais</a>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+
+          <% })
+          }%>
+
+        </div>
+      </div>
+
+      <div class="fixed-action-btn">
+        <a href="#" onclick="fechar()">
+          <div class="row">
+            <div class="col s12">
+              <div class="card orange pulse">
+                <div class="card-content white-text">
+                  <span class="card-title">ENCOMENTE JÁ O SEU</span>
+                  <p>Entre em contato e garanta um desconto especial.
+                  Descontos de até 30%.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      
