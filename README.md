@@ -1,6 +1,3 @@
-# nodeMongoDB
-
-
 # ATIVIDADE Pós - Node com Mongo DB
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/bhnicoletti/nodeMongoDB/blob/main/LICENSE) 
 
